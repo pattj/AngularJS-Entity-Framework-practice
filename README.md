@@ -1,5 +1,3 @@
-# Stylelabs.Recruitment Repository #
+# .Net Web API and AngularJS Practice#
 
-This repository contains the technical assessment for the following profiles:
-dotNet developer
-web developer
+ 
