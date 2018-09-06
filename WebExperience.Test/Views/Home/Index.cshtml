@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Welcome";
+}
+
+<style>
+    table, tr, td, th {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+    }
+</style>
+
+ 
+
+<h2>Asset List</h2>
+<body data-ng-app="APIModule">
+    <div id="tblSubs" ng-controller="APIController">
+        <div class="form-group">
+            <label for="Asset_Id">Asset Id</label>
+            <input type="text" class="form-control" id="Asset_Id" placeholder="Enter Id" [required="string" ] data-ng-model="Asset_Id" />
+            <label for="File_Name">File Name</label>
+            <input type="text" class="form-control" id="File_Name" placeholder="Enter File Name" [required="string" ] data-ng-model="File_Name" />
+            <label for="Mime_Type">Mime Type</label>
+            <input type="text" class="form-control" id="Mime_Type" placeholder="Enter MIME Type" [required="string" ] data-ng-model="Mime_Type" />
+        </div>
+        <button type="button" class="btn btn-default" data-ng-click="saveAssets();">Submit</button>
+
+
+        <table>
+            <tr>
+                <th>Asset Id</th>
+                <th>File Name</th>
+                <th>MIME Type</th>
+            </tr>
+            <tbody data-ng-repeat="asset in filteredAssets">
+                <tr>
+                    <td>{{asset.Asset_Id}}</td>
+                    <td>{{asset.File_Name}}</td>
+                    <td>{{asset.Mime_Type}}</td>
+                    <td> <input type="button" id="Delete" value="Delete" data-ng-click="dltAsset(asset.Asset_Id);" /> </td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td align="center" colspan="6 ">
+
+                        <div class="pull-right">
+                            <pagination total-items="totalCount" ng-change="pageChanged()" items-per-page="pageSizeSelected" direction-links="true" ng-model="pageIndex" max-size="maxSize" class="pagination" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+                            <a class="btn btn-primary">Page: {{pageIndex}} / {{numPages}}</a>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+
+        </table>
+    </div>
+</body>
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/angular-route.js"></script>
+<script src="~/Scripts/app/Module.js"></script>
+<script src="~/Scripts/app/Service.js"></script>
+<script src="~/Scripts/app/Controller.js"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script data-require="ui-bootstrap" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
